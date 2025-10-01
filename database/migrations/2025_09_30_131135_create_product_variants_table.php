@@ -32,7 +32,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignId('variant_id')->nullable()->constrained('product_variants')->cascadeOnDelete();
-            $table->string('discount_type', ['percentage', 'fixed']);
+            $table->enum('discount_type', ['percentage', 'fixed']);
             $table->float('amount');
             $table->timestamps();
             $table->unique(['product_id','variant_id','discount_type']);
