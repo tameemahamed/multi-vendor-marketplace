@@ -74,7 +74,7 @@ This application is designed to facilitate multi-vendor commerce, featuring deta
 ---
 
 ## Database Schema
-![Database Schema Image](https://i.ibb.co.com/xSgywBDx/ecommerce-v2.png)  
+![Database Schema Image](README_Images/databaseSchema.png)  
 <p align="center"><small>Figure: Database schema for the multi vendor e-commerce web app.</small></p>
 
 
