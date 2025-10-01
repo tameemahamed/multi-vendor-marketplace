@@ -43,6 +43,19 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
+            $table->foreignUuid('order_id')->constrained('orders')->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained('products')->noActionOnDelete();
+            $table->foreignId('variant_id')->nullable()->constrained('product_variants')->noActionOnDelete();
+            $table->unsignedInteger('quantity');
+            $table->unsignedInteger('price_at_purchase'); // Snapshot of price
+            $table->unsignedInteger('discount_at_purchase'); // Snapshot
+            $table->timestamps();
+            $table->softDeletes();
+
+        });
     }
 
     /**
