@@ -43,7 +43,7 @@ This application is designed to facilitate multi-vendor commerce, featuring deta
 * Reports on sales and revenue by district, with filters for date range.
 * Moderation of products (approve or deny new products that have been submitted).
 * Approving and managing seller onboarding.
-* Global coupons and discounts management (make, schedule, expire, and blacklist).
+* Global coupons and discounts management (make, schedule, expire, and blacklist).
 * Metrics for the dashboard, like sales, orders, active sellers, and popular products.
 
 ### Seller panel
@@ -72,5 +72,9 @@ This application is designed to facilitate multi-vendor commerce, featuring deta
 * Custom coupon.
 
 ---
+
+## Database Schema
+![Database Schema Image](https://i.ibb.co.com/xSgywBDx/ecommerce-v2.png)  
+<p align="center"><small>Figure: Database schema for the multi vendor e-commerce web app.</small></p>
 
 
