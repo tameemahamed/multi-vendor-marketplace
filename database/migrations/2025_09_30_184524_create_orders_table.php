@@ -22,12 +22,12 @@ return new class extends Migration
         });
 
         Schema::create('orders', function (Blueprint $table) {
-            $table->uuid();
+            $table->uuid('id')->primary();
             $table->foreignId('user_id')->constrained('users')->noActionOnDelete();
             $table->foreignId('status_id')->constrained('order_statuses')->nullOnDelete();
-            $table->integer('total_amount');
-            $table->integer('total_discount');
-            $table->foreignId('payment_status')->constrained('payment_statuses')->nullOnDelete();
+            $table->unsignedInteger('total_amount');
+            $table->unsignedInteger('total_discount');
+            $table->foreignId('payment_status_id')->constrained('payment_statuses')->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

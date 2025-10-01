@@ -21,23 +21,27 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->noActionOnDelete();
             $table->string('name');
-            $table->integer('price');
-            $table->integer('stock');
+            $table->unsignedInteger('price');
+            $table->unsignedInteger('stock');
             $table->foreignId('status_id')->constrained('product_variant_statuses')->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
 
         Schema::create('product_discounts', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
-            $table->foreignId('variant_id')->constrained('product_variants')->cascadeOnDelete();
-            $table->string('discount_type');
+            $table->foreignId('variant_id')->nullable()->constrained('product_variants')->cascadeOnDelete();
+            $table->string('discount_type', ['percentage', 'fixed']);
             $table->float('amount');
+            $table->timestamps();
+            $table->unique(['product_id','variant_id','discount_type']);
         });
 
         Schema::create('product_images', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
-            $table->foreignId('variant_id')->constrained('product_variants')->cascadeOnDelete();
+            $table->foreignId('variant_id')->nullable()->constrained('product_variants')->cascadeOnDelete();
             $table->string('image_url');
         });
     }

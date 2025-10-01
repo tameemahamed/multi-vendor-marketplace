@@ -23,6 +23,7 @@ return new class extends Migration
         });
 
         Schema::create('review_images', function (Blueprint $table){
+            $table->id();
             $table->foreignId('product_review_id')->constrained('product_reviews')->cascadeOnDelete();
             $table->string('image_url');
         });

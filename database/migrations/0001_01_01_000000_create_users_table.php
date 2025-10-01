@@ -23,9 +23,10 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('role_permission', function (Blueprint $table) {
+        Schema::create('permission_role', function (Blueprint $table) {
             $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
             $table->foreignId('permission_id')->constrained('permissions')->cascadeOnDelete();
+            $table->primary(['role_id', 'permission_id']);
         });
 
         Schema::create('users', function (Blueprint $table) {
@@ -39,7 +40,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('mobile_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('role_id')->constrained('roles');
+            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

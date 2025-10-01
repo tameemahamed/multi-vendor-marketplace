@@ -16,7 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignId('variant_id')->constrained('product_variants')->cascadeOnDelete();
-            $table->string('quantity');
+            $table->unsignedInteger('quantity');
+            $table->timestamps();
+            $table->primary(['user_id','product_id','variant_id']);
         });
 
         Schema::create('wishlists', function(Blueprint $table) {
@@ -29,12 +31,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignId('variant_id')->constrained('product_variants')->cascadeOnDelete();
-            $table->string('quantity');
+            $table->unsignedInteger('quantity');
         });
 
         Schema::create('user_search_histories', function(Blueprint $table) {
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
+            $table->primary(['user_id', 'product_id']);
         });
     }
 
