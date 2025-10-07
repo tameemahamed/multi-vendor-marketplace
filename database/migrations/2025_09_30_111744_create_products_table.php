@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->mediumText('description');
-            $table->foreignId('seller_id')->constrained('users')->noActionOnDelete();
+            $table->foreignId('seller_id')->constrained('sellers')->noActionOnDelete();
             $table->foreignId('product_category_id')->constrained('product_categories')->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
