@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('mobile_number');
             $table->text('address_line_1');
             $table->text('address_line_2');
+            $table->boolean('is_thana');
             $table->string('thana_or_upozilla');
             $table->foreignId('district_id')->constrained('districts')->cascadeOnDelete();
             $table->foreignId('division_id')->constrained('divisions')->cascadeOnDelete();
