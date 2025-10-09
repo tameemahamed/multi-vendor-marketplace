@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('seller_addresses', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignId('seller_id')->constrained('sellers')->noActionOnDelete();
             $table->string('mobile_number');
             $table->text('address_line_1');
