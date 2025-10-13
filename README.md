@@ -16,6 +16,8 @@ This is a modern full-stack multi-vendor e-commerce platform built with **Larave
   * [Authentication & Security](#authentication--security)
   * [Discount system](#discount-system)
 
+* [Database Schema](#database-schema)
+  
 --- 
 
 ## Project overview
