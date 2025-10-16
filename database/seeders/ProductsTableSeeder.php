@@ -2100,7 +2100,7 @@ class ProductsTableSeeder extends Seeder
                 $variants[] = [
                     'product_id' => $productId,
                     'name' => $v['name'],
-                    'price' => $v['price'],
+                    'price' => $this->currencyConvertBDT($v['price']), // converted to bdt
                     'stock' => $v['stock'],
                     'status_id' => $statusMap[$v['status']],
                     'created_at' => $now,
@@ -2113,5 +2113,29 @@ class ProductsTableSeeder extends Seeder
         foreach (array_chunk($variants, 50) as $chunk) {
             DB::table('product_variants')->insert($chunk);
         }
+    }
+
+    // convert price to DBT(Bangladeshi taka)
+    private function currencyConvertBDT($amount) {
+        $temp = $amount;
+        $digits = 0;
+        while($temp>0) {
+            $digits++;
+            $temp = intdiv($temp, 10);
+        }
+        $factor = 1;
+        switch ($digits) {
+            case 1:
+            case 2:
+                $factor = 10;
+                break;
+            case 3:
+                $factor = 100;
+                break;
+            default:
+                $factor = 1000;
+        }
+
+        return abs((int)floor($amount * 140 / $factor) * $factor -1);
     }
 }
